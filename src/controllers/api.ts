@@ -1,7 +1,7 @@
-import express from 'express'
+import express, {Request, Response} from 'express'
 
-const getApi = (req: express.Request, res: express.Response, next: Function) => {
-  res.send('hello aaa')
-}
+const getApi = ((req: Request, res: Response) => {
+  res.send('hi')
+})
 
 export default getApi

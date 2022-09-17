@@ -15,7 +15,9 @@ const app = express()
 app.use(morgan('short'))
 
 // // add routing for / path
-app.use('/', routes);
+app.use(routes);
+
+// app.use('/images', express.static('../images/full'));
 
 // start express server
 app.listen(PORT, () => {
