@@ -10,3 +10,17 @@ describe('Test endpoint response', () => {
     expect(response.status).toBe(200)
   })
 })
+
+describe('Test endpoint response', () => {
+  it('test images endpoint', async () => {
+    const response = await request.get('/images')
+    expect(response.status).toBe(400)
+  })
+})
+
+describe('Test endpoint response', () => {
+  it('test resize endpoint', async () => {
+    const response = await request.get('/resize')
+    expect(response.status).toBe(400)
+  })
+})

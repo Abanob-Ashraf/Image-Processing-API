@@ -8,7 +8,7 @@
     "jasmine": "jasmine",
     "dev": "nodemon ./src/main.ts",
     "start": "npm run build && nodemon build/main.js",
-    "test": "npx tsc && jasmine",
+    "test": "npx tsc && npm run jasmine",
     "prettier": "prettier --write src/**/*.{ts,tsx,js,jsx}",
     "lint": "eslint . --ext .ts"
   },
@@ -26,7 +26,7 @@
   },
   "devDependencies": {
     "@types/express": "^4.17.13",
-    "@types/jasmine": "^3.10.2",
+    "@types/jasmine": "^3.10.6",
     "@types/morgan": "^1.9.3",
     "@types/node": "^16.11.12",
     "@types/sharp": "^0.31.0",
