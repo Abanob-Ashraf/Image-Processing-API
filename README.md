@@ -1,73 +1,88 @@
 # Image Processing API
 
-is a project i made mainly for my personal practice and for FWD Udacity Advanced Full-Stack Web Development
+## Overview
 
-# Introduction to the project
+The project goal is to simulate a real-world scenario in which you would read and write to the disk using an express server. The project serves two purposes: the project is implemented to be used in two different ways. The first, as a simple placeholder API that allows us to place images into our frontend with the size set via url parameters. The second use case is as a library (sharp) to serve properly scaled versions of our images to the frontend to reduce page load size.
 
-It is an API that process on stored photos to rescale them.
+## How to build and start the server
 
-# How to use
+The project can be built and run in the following ways
 
-use the command 'npm install' to install the dependencies
+### 1. Install all dependencies
 
-### Scripts
-- Install: ```npm install```
-- Build: ```npm run build```
-- Lint: ```npm run lint```
-- prettier: ```npm run prettier```
-- Run unit tests: ```npm run test```
-- Start server: ```npm run start```
-- Start as developer: ```npm run dev``` (run .ts files)
+`npm install`
 
-### Usage
-The server will listen on port 3000:
+### 3. Build
 
-#### Brief instructions
-http://localhost:3000/
+`npm run build`
 
-#### Endpoint to review image
-http://localhost:3000/api/images
+This command will build the typeScript code into JavaScript and save them in the `./build` folder.
 
-#### Endpoint to resize images
-http://localhost:3000/api/resize
+### 4. Start the Server
 
-Expected query arguments are:
-- _filename_: Available filenames are:
-  - encenadaport
-  - fjord
-  - icelandwaterfall
-  - palmtunnel
-  - santamonica
-- _width_: numerical pixel value > 0
-- _height_: numerical pixel value > 0
+`npm run start`
 
-#### Example 1
-http://localhost:3000/api/images
-Bad request, Please enter a valid URL containg the imagename
+This command will start the server running on port `3000`.
 
-#### Example 2
-http://localhost:3000/api/images?name
-Enter the image name correct or this image doesn't exist
+### `/`
 
-#### Example 3
-http://localhost:3000/api/images?name=fjord
-Will display the original fjord image.
+Method: `get`
 
-#### Example 4
-http://localhost:3000/api/resize
-Bad request, Please enter a valid URL containg the imagename
+    For example: `http://localhost:prot:3000`
 
-#### Example 5
-http://localhost:3000/api/resize?name=fjord&height=200&width=200
-Will scale the fjord image to 200 by 200 pixels and store the resulting image.
-On subsequent calls will serve the resized image instead of resizing the
-original again.
+## Testing, prettier and Linting
 
-#### Example 6
-http://localhost:3000/api/resize?name=fjord&height=200
-Please enter a valid URL containg the imagename, height and the width parameters.
+Here, you can use test cases to test the project and also check that the code respects all the eslint rules and prettier to have a well formatted code.
 
-#### Example 7
-http://localhost:3000/api/resize?filename=fjord&width=200
-Please enter a valid URL containg the imagename, height and the width parameters.
+### 1. Linting
 
+`npm run lint`
+
+### 2. prettiering
+
+`npm run prettier`
+
+### 3. Testing
+
+`npm run test`
+
+## Brief instructions
+
+### `http://localhost:3000/`
+
+## Endpoint
+
+### `/images?name=<image_name>`
+
+Method: `get`
+Query Param: `name` - the specific image you are requesting.
+
+    For example: `localhost:3000/images?name=fjord`
+
+### `/resize?name=<image_name>&height=<height>&width=<width>`
+
+Method: `get`
+Query Param: `name` - the specific image you are requesting, `height` and `width` - the height or width of the image in pixels
+
+    For example: `http://localhost:3000/resize?name=fjord&height=200&width=200`
+
+#### Available Image options
+
+1. `encenadaport`
+2. `fjord`
+3. `icelandwaterfall`
+4. `palmtunnel`
+5. `santamonica`
+
+### Functionality
+
+- User can query endpoint using various queries to retrieve an image with a specified height and width.
+- All images requested will be saved to disk.
+- There is a cache layer. If a user requests an image size that has already been requested, there is no need for resizing and the previously resized image will be returned.
+
+## Built With
+
+- [NodeJS](https://nodejs.org/en/) - The JavaScript runtime.
+- [Express](https://expressjs.com/) - The web framework.
+- [TypeScript](https://www.typescriptlang.org/) - The language used.
+- [Sharp](https://sharp.pixelplumbing.com/) - NodeJS image processor.
