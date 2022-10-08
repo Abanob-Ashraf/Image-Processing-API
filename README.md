@@ -28,7 +28,7 @@ This command will start the server running on port `3000`.
 
 Method: `get`
 
-    For example: `http://localhost:prot:3000`
+    For example: `http://localhost:port:3000`
 
 ## Testing, prettier and Linting
 
